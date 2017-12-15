@@ -45,14 +45,26 @@ public class Temp {
 		this.size = size;
 		this.offset = offset;
 	}
-
+	
+	private static Map<Integer, Temp> constTempPool = new HashMap<Integer, Temp>();
+	//New Insert
+	private static Map<Integer, Temp> allTempTable = new HashMap<Integer, Temp> ();
+	//End
+	
 	public static Temp createTempI4() {
 		int id = tempCount++;
-		return new Temp(id, "_T" + id, 4, Integer.MAX_VALUE);
+		Temp dst = new Temp(id, "_T" + id, 4, Integer.MAX_VALUE);
+		//New Insert
+		allTempTable.put(id, dst);
+		//end
+		return dst;
 	}
-
-	private static Map<Integer, Temp> constTempPool = new HashMap<Integer, Temp>();
-
+	//New Insert for Comp
+	public static Temp getTempById(int id) {
+		return allTempTable.get(id);
+	}
+	//End
+	
 	public static Temp createConstTemp(int value) {
 		Temp temp = constTempPool.get(value);
 		if (temp == null) {

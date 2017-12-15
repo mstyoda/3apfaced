@@ -326,6 +326,33 @@ public class Translater {
 		return dst;
 	}
 
+	//New Insert For Comp
+	public Temp genLoadComp(int re, int im) {
+		Temp compTemp = genNewArray(genLoadImm4(3));
+		genStore(genLoadImm4(re),compTemp,4);//re
+		genStore(genLoadImm4(im),compTemp,8);//im
+		return compTemp;
+	}
+	//END
+	
+	//New Insert For Comp
+	public Temp genRe(Temp src) {
+		return genLoad(src,4);
+	}
+
+	public Temp genIm(Temp src) {
+		return genLoad(src,8);
+	}
+
+	public Temp genCompCast(Temp src) {
+		Temp dst = genLoadComp(0,0);
+		genStore(src,dst,4); //re
+		genStore(genLoadImm4(0),dst,8); //im
+		return dst;
+	}
+
+	//END
+	
 	public Temp genLoadStrConst(String value) {
 		Temp dst = Temp.createTempI4();
 		append(Tac.genLoadStrConst(dst, value));

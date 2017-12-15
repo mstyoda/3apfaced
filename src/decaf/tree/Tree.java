@@ -1237,7 +1237,7 @@ public abstract class Tree {
     public static class Literal extends Expr {
 
     	public int typeTag;
-        public Object value;
+      public Object value;
 
         public Literal(int typeTag, Object value, Location loc) {
             super(LITERAL, loc);

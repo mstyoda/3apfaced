@@ -1,0 +1,13 @@
+class Main {
+    static void main() {
+			complex ab;
+			complex bc;
+			ab = 12j;
+			PrintComp(ab);
+			Print("\n");
+			bc = 45j;
+			PrintComp(45j);
+			Print("\n");
+			PrintComp(ab);
+    }
+}
